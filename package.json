@@ -1,0 +1,39 @@
+{
+  "name": "betsapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "dev:js": "tsc-watch --onSuccess \"node dist/server.js\" ",
+    "build": "tsc dist/settings",
+    "start": "node dist/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "koa": "^2.13.4",
+    "koa-basic-auth": "^4.0.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "koa-mount": "^4.0.0",
+    "koa-router": "^12.0.0",
+    "koa2-cors": "^2.0.6",
+    "mongoose": "^6.5.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.5",
+    "@types/koa-basic-auth": "^2.0.4",
+    "@types/koa-bodyparser": "^4.3.7",
+    "@types/koa-logger": "^3.1.2",
+    "@types/koa-mount": "^4.0.1",
+    "@types/koa-router": "^7.4.4",
+    "@types/koa2-cors": "^2.0.2",
+    "nodemon": "^2.0.19",
+    "ts-node": "^10.9.1",
+    "tsc-watch": "^5.0.3",
+    "typescript": "^4.7.4"
+  }
+}
