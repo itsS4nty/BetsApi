@@ -1,12 +1,38 @@
 import { IAuth } from 'interfaces/auth/IAuth';
-import { IResponse } from 'interfaces/response/IResponse';
 import { ISetUser, ISetUserResponse } from 'interfaces/user/ISetUser';
-import { ILogin } from 'interfaces/user/ILogin';
-import { getUserByMail } from '../../models/user/user.methods';
+import { ILogin, ILoginResponse } from 'interfaces/user/ILogin';
+import { getUserByMail, getUserByPasswd } from '../../models/user/user.methods';
 import { User } from '../../models/user/user.model';
+const jwt = require('jsonwebtoken');
+import 'dotenv/config';
 
-export async function login(filter: ILogin, auth: IAuth): Promise<IResponse> {
+export async function login(filter: ILogin, auth: IAuth): Promise<ILoginResponse> {
+    const response: ILoginResponse = {
+        success: false,
+        message: "",
+        redirectUrl: "",
+        token: ""
+    };
+    if(!auth.success || !filter.mail || !filter.passwd) {
+        response.message = "Data left";
+        return response;
+    }
 
+    if(!(await getUserByMail(filter.mail))) {
+        response.message = "Email not valid";
+        return response;
+    }
+
+    const user = await getUserByPasswd(filter.mail, filter.passwd);
+    if(!user) {
+        response.message = "Password doesn't match";
+        return response;
+    }
+
+    response.token = jwt.sign(JSON.stringify(user), process.env.JWT_TOKEN);
+    response.success = true;
+
+    return response;
 }
 
 export async function setUser(filter: ISetUser, auth: IAuth): Promise<ISetUserResponse> {
