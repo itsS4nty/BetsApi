@@ -6,6 +6,10 @@ export async function getUserByMail(mail: string): Promise<IUser | null> {
     return User.findOne({ mail: mail }).then((user) => user);
 }
 
+export async function getUserByPasswd(mail: string, passwd: string): Promise<IUser | null> {
+    return User.findOne({ mail: mail, passwd: passwd }).then((user) => user);
+}
+
 export async function setLastUpdated(user: IUser): Promise<void> {
     user.updatedAt = new Date();
     user.save();

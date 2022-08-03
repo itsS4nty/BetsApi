@@ -1,4 +1,4 @@
-import { IAuth } from 'interfaces/auth/IAuth';
+import { IResponse } from "interfaces/response/IResponse";
 
 export interface ISetUser {
     firstName: string;
@@ -8,3 +8,5 @@ export interface ISetUser {
     mail: string;
     passwd: string;
 }
+
+export interface ISetUserResponse extends IResponse { }

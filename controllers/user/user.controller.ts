@@ -1,11 +1,16 @@
 import { IAuth } from 'interfaces/auth/IAuth';
 import { IResponse } from 'interfaces/response/IResponse';
-import { ISetUser } from 'interfaces/user/ISetUser';
+import { ISetUser, ISetUserResponse } from 'interfaces/user/ISetUser';
+import { ILogin } from 'interfaces/user/ILogin';
 import { getUserByMail } from '../../models/user/user.methods';
 import { User } from '../../models/user/user.model';
 
-export async function setUser(filter: ISetUser, auth: IAuth): Promise<IResponse> {
-    const response: IResponse = {
+export async function login(filter: ILogin, auth: IAuth): Promise<IResponse> {
+
+}
+
+export async function setUser(filter: ISetUser, auth: IAuth): Promise<ISetUserResponse> {
+    const response: ISetUserResponse = {
         success: false,
         message: "",
         redirectUrl: "",
