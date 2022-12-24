@@ -22,7 +22,8 @@ app.use(mount('/health', auth({
 
 // jwt
 // Middleware below this line is only reached if JWT token is valid
-app.use(jwt({ secret: `${process.env.JWT_TOKEN}` }).unless({ path: [/^\/users/] }));
+// UNCOMMENT WHEN REACT APP IS CREATED
+// app.use(jwt({ secret: `${process.env.JWT_TOKEN}` }).unless({ path: [/^\/users/] }));
 
 // routes
 app.use(health.routes());
