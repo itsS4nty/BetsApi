@@ -22,6 +22,6 @@ healthRouter.get('/health', async(ctx) => {
     }
 });
 
-healthRouter.use(usersRoutes.routes())
+healthRouter.use(usersRoutes.routes());
 
 export default healthRouter;

@@ -70,7 +70,6 @@ export async function setUser(filter: ISetUser, auth: IAuth): Promise<ISetUserRe
         response.success = true;
         return response;
     } catch(err) {
-        console.log(err);
         response.message = "General error.";
         return response;
     }
